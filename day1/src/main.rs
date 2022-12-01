@@ -20,9 +20,7 @@ fn puzzle2(elves_calories: &HashMap<usize, usize>) -> usize {
     let mut top_calories = elves_calories.values().cloned().collect::<Vec<usize>>();
     top_calories.sort();
     top_calories.reverse();
-    let top_calories_sum = top_calories[0] + top_calories[1] + top_calories[2];
-
-    top_calories_sum
+    top_calories.iter().take(3).sum()
 }
 
 fn main() {
@@ -39,6 +37,7 @@ fn main() {
 
     let (elf_id, max_calories) = puzzle1(&elves_calories);
     println!("Elf {} caries the most calories: {}", elf_id, max_calories);
+
     let top_calories_sum = puzzle2(&elves_calories);
     println!("Top 3 elves calories sum: {}", top_calories_sum);
 }
